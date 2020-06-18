@@ -1,1 +1,1 @@
-addSbtPlugin("io.spray" % "sbt-revolver" % "0.9.1")
+addSbtPlugin("ch.epfl.lamp" % "sbt-dotty" % "0.4.0")

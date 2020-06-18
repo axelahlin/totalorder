@@ -1,22 +1,16 @@
-lazy val akkaHttpVersion = "10.1.12"
-lazy val akkaVersion    = "2.6.6"
+scalaVersion := "0.22.0-RC1"
+//scalaVersion := dottyLatestNightlyBuild.get
 
-lazy val root = (project in file(".")).
-  settings(
-    inThisBuild(List(
-      organization    := "com.axelahlin",
-      scalaVersion    := "2.13.1"
-    )),
-    name := "totalorder",
-    libraryDependencies ++= Seq(
-      "com.typesafe.akka" %% "akka-http"                % akkaHttpVersion,
-      "com.typesafe.akka" %% "akka-http-spray-json"     % akkaHttpVersion,
-      "com.typesafe.akka" %% "akka-actor-typed"         % akkaVersion,
-      "com.typesafe.akka" %% "akka-stream"              % akkaVersion,
-      "ch.qos.logback"    % "logback-classic"           % "1.2.3",
+scalacOptions ++= Seq("-Yindent-colons", "-unchecked", "-deprecation", "-language:implicitConversions")
 
-      "com.typesafe.akka" %% "akka-http-testkit"        % akkaHttpVersion % Test,
-      "com.typesafe.akka" %% "akka-actor-testkit-typed" % akkaVersion     % Test,
-      "org.scalatest"     %% "scalatest"                % "3.0.8"         % Test
-    )
-  )
+name := "web-server-example"
+version := "0.1.0"
+
+libraryDependencies += "com.typesafe.akka" % "akka-http_2.13"   % "10.1.11"
+libraryDependencies += "com.typesafe.akka" % "akka-stream_2.13" % "2.6.3"
+
+fork := true
+run / connectInput := true
+outputStrategy := Some(StdoutOutput)
+
+ThisBuild / useSuperShell := false
